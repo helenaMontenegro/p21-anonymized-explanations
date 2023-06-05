@@ -6,11 +6,27 @@ Official repository of the paper [Privacy-Preserving Generative Adversarial Netw
 * scikit-learn (version: 1.2.1)
 * h5py (version: 3.1.0)
 
-The data is organized in a .hdf5 file with the following folders:
+## Data
+The data that is provided to the models is organized in a .hdf5 file with the following folders:
 * **id** - identity annotations, where each image is assigned a value in [0, number of patients[, corresponding to the ID of the patient;
 * **dis** - medical annontations, where each image is assigned a value in [0, number of different commorbities[;
 * **set** - 0 if the image belongs to the training set, 1 for validation or and 2 for the test set
 * **images** - array of images
+
+The scripts used to preprocess the [iris data](http://zbum.ia.pw.edu.pl/EN/node/46) and save it into the .hdf5 file are available in the ```preprocessing``` folder. The script ```preprocess_data.py``` normalizes the images and saves them into the .hdf5 file. It is executed with the following parameters:
+
+Name | Type | Required | Description
+---- | ---- | -------- | -----------
+--image_path | string | yes | Path to the folder that contains the images
+--annotations_path | string | yes | Path to the .csv file that contains the annotations
+--save_path | string | yes | Name of the .hdf5 file where the data will be saved
+
+The script ```obtain_masks.py``` generates iris segmentation masks. It is executed with the following parameters:
+
+Name | Type | Required | Description
+---- | ---- | -------- | -----------
+--data_path | string | yes | Path to the .hdf5 file where the data is saved
+--save_path | string | yes | Name of the .hdf5 file where the masks will be saved
 
 ## Classification Networks
 
